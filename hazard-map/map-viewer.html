@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="./resources/ol.css">
+        <link rel="stylesheet" href="resources/fontawesome-all.min.css">
+        <link href="resources/ol-geocoder.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+        <link rel="stylesheet" href="./resources/qgis2web.css">
+        <style>
+        html, body {
+            background-color: #ffffff;
+        }
+        .ol-control > * {
+            background-color: #f8f8f8!important;
+            color: #444444!important;
+            border-radius: 0px;
+        }
+        .ol-attribution a, .gcd-gl-input::placeholder, .search-layer-input-search::placeholder {
+            color: #444444!important;
+        }
+        .search-layer-input-search {
+            background-color: #f8f8f8!important;
+        }
+        .ol-control > *:focus, .ol-control >*:hover {
+            background-color: rgba(248, 248, 248, 0.7)!important;
+        } 
+        .ol-control {
+            background-color: rgba(255,255,255,.4) !important;
+            padding: 2px !important;
+        } 
+        </style>
+
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+
+        <style>
+        /* Return to Portal Button */
+        .return-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: white;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .return-button:hover {
+            background-color: #2563eb;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                <div id="popup-content"></div>
+            </div>
+        </div>
+        <a href="../index.php" class="return-button">
+            <i class="fa fa-arrow-left"></i>
+            Return to Portal
+        </a>
+        <script src="resources/qgis2web_expressions.js"></script>
+        <script src="./resources/functions.js"></script>
+        <script src="./resources/ol.js"></script>
+        <script src="./resources/ol-layerswitcher.js"></script>
+        <script src="resources/ol-geocoder.js"></script>
+        <script src="layers/Candon_Tsunami_1.js"></script><script src="layers/Candon_StormSurge_SSA4_2.js"></script><script src="layers/Candon_StormSurge_SSA3_3.js"></script><script src="layers/Candon_StormSurge_SSA2_4.js"></script><script src="layers/Candon_StormSurge_SSA1_5.js"></script><script src="layers/Candon_RainInducedLandslide_6.js"></script><script src="layers/Candon_Liquefaction_7.js"></script><script src="layers/Candon_LandslideHazards_8.js"></script><script src="layers/Candon_Flood_100year_9.js"></script><script src="layers/Tsunami_10.js"></script><script src="layers/RoadNetwork_11.js"></script><script src="layers/CandonBrgyBoundary_12.js"></script><script src="layers/11_GarbageandWasteDisposal_13.js"></script><script src="layers/10_TransportFacility_14.js"></script><script src="layers/09_TourismSitesandDestination_15.js"></script><script src="layers/08_FinancialandCreditInstitutions_16.js"></script><script src="layers/07_EnergyFacility_17.js"></script><script src="layers/06_WaterFacility_18.js"></script><script src="layers/05_InputDealer_19.js"></script><script src="layers/04_AgriculturalFacility_20.js"></script><script src="layers/03_ServiceFacility_21.js"></script><script src="layers/02_EducationFacility_22.js"></script><script src="layers/01_HealthFacility_23.js"></script><script src="layers/CBMS2023HH_24.js"></script>
+        <script src="styles/Candon_Tsunami_1_style.js"></script><script src="styles/Candon_StormSurge_SSA4_2_style.js"></script><script src="styles/Candon_StormSurge_SSA3_3_style.js"></script><script src="styles/Candon_StormSurge_SSA2_4_style.js"></script><script src="styles/Candon_StormSurge_SSA1_5_style.js"></script><script src="styles/Candon_RainInducedLandslide_6_style.js"></script><script src="styles/Candon_Liquefaction_7_style.js"></script><script src="styles/Candon_LandslideHazards_8_style.js"></script><script src="styles/Candon_Flood_100year_9_style.js"></script><script src="styles/Tsunami_10_style.js"></script><script src="styles/RoadNetwork_11_style.js"></script><script src="styles/CandonBrgyBoundary_12_style.js"></script><script src="styles/11_GarbageandWasteDisposal_13_style.js"></script><script src="styles/10_TransportFacility_14_style.js"></script><script src="styles/09_TourismSitesandDestination_15_style.js"></script><script src="styles/08_FinancialandCreditInstitutions_16_style.js"></script><script src="styles/07_EnergyFacility_17_style.js"></script><script src="styles/06_WaterFacility_18_style.js"></script><script src="styles/05_InputDealer_19_style.js"></script><script src="styles/04_AgriculturalFacility_20_style.js"></script><script src="styles/03_ServiceFacility_21_style.js"></script><script src="styles/02_EducationFacility_22_style.js"></script><script src="styles/01_HealthFacility_23_style.js"></script><script src="styles/CBMS2023HH_24_style.js"></script>
+        <script src="./layers/layers.js" type="text/javascript"></script> 
+        <script src="./resources/Autolinker.min.js"></script>
+        <script src="./resources/qgis2web.js"></script>
+    </body>
+</html>
