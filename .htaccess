@@ -1,17 +1,34 @@
 DirectoryIndex index.php index.html
 Options -Indexes
 
+# Prevent directory listing
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>
+
+# Handle PHP files
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
     
-    # Redirect to index.php if directory is accessed
+    # If the request is for a file or directory that exists, serve it directly
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
-    RewriteRule ^(.*)$ index.php [L]
+    RewriteRule ^ - [L]
+    
+    # Otherwise, redirect to index.php
+    RewriteRule ^ index.php [L]
 </IfModule>
 
 # PHP settings
 <IfModule mod_php.c>
     php_flag display_errors On
     php_value error_reporting E_ALL
+</IfModule>
+
+# LiteSpeed specific settings
+<IfModule LiteSpeed>
+    CacheLookup on
+    RewriteEngine On
+    RewriteRule .* - [E=noconntimeout:1]
 </IfModule> 
