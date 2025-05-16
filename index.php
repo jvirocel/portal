@@ -1,10 +1,16 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require_once 'config/database.php';
 
 // Fetch active services from database
 try {
-    $stmt = $pdo->query("SELECT * FROM services ORDER BY id DESC"); $services =
-$stmt->fetchAll(PDO::FETCH_ASSOC); } catch (PDOException $e) { $services = []; }
+    $stmt = $pdo->query("SELECT * FROM services ORDER BY id DESC");
+    $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Database error: " . $e->getMessage());
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
