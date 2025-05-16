@@ -1,0 +1,17 @@
+DirectoryIndex index.php index.html
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Redirect to index.php if directory is accessed
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^(.*)$ index.php [L]
+</IfModule>
+
+# PHP settings
+<IfModule mod_php.c>
+    php_flag display_errors On
+    php_value error_reporting E_ALL
+</IfModule> 
